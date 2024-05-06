@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Кликер монет</title>
+    <link rel="stylesheet" href="/">
+</head>
+
+<body>
+
+
+    <div id="conectvue">
+        <div class="shopOpenDiv">
+            <!-- МАГАЗИН КНОПКИ Открыть -->
+            <button class="shopOpen" @click="ShopContOn" v-if="ShopContView===undefined"> Открыть Магазин </button>
+            <button class="shopOpen" style="background-color: red; color: white;" @click="ShopContOf" v-if="ShopContView===true"> Закрыть Магазин </button>
+           <!-- МОИ СКИНЫ КНОПКИ -->
+            <button class="myscins" @click="myscinsOpen">Мои скины</button>
+            <button class="myscins" style="background-color: red; color: white;" @click="myscinsOpen">Закрыть</button>
+        </div>
+        <div class="shopcontainer" v-if="ShopContView===true">
+            <h2 class="scoreclick scoreshop"> {{ scoreClick }} $ </h2>
+            <hr />
+
+            <div class="shopbtndiv">
+
+                <button class="shopplusbtn" @click=" btnShop1lvl"> Купить за 20$: +5$ </button>
+                <button class="shopplusbtn" @click=" btnShop2lvl"> Купить за 40$: +10$ </button>
+                <button class="shopplusbtn" @click=" btnShop3lvl"> Купить за 80$: +25$ </button>
+                <button class="shopplusbtn" @click=" btnShop4lvl"> Купить за 100$: +30$ </button>
+
+            </div>
+
+            <hr />
+            <h1 class="scoreclick scoreshop"> Скины: </h1>
+            <hr />
+            
+            <div class="shopbtndiv">
+                <button class="scinone" @click="scinOneOn" v-if="scinOne===undefined">500$</button>
+                <button class="scintwo" @click="scinTwoOn" v-if="scinTwo===undefined">1800$</button>
+                <button class="scinthree"  @click="scinThreeOn" v-if="scinThree===undefined">3000$</button>
+                <button class="scinfour"  @click="scinFourOn" v-if="scinFour===undefined">50000$</button>
+                
+
+
+
+
+            </div>
+
+
+
+            
+        </div>
+        
+        <div class="mainclicker" v-if="ShopContView===undefined">
+            <h1 class="scoreclick"> {{ scoreClick }} $ </h1>
+            
+            <button @click="clickerBtn" :class="[
+            (scinOne===false ? 'scinoneclick' : 'clickerbtn'),
+            (scinTwo===false ? 'scintwoclick' : 'clickerbtn'),
+            (scinThree===false ? 'scinthreeclick' : 'clickerbtn'),
+            (scinFour===false ? 'scinfourclick' : 'clickerbtn')]">Жми</button>
+            
+            
+        </div>
+
+
+
+
+
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <script src="./clickerJavaS.js"></script>
+</body>
+<style>
+    body {
+        background-color: mediumaquamarine;
+    }
+
+    /* КЛИКЕР */
+    .scoreclick {
+        color: white;
+        font-size: 60px;
+
+    }
+
+    .clickerbtn {
+        background-color: brown;
+        color: white;
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        align-content: center;
+    }
+
+    .mainclicker {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    /* МАГАЗИН */
+    .shopcontainer {
+        border: solid 2px black;
+        border-radius: 15px;
+
+
+    }
+
+    .shopplusbtn {
+
+        border-radius: 25px;
+        width: 180px;
+        height: 65px;
+        color: white;
+        background-color: darkgoldenrod;
+        margin: 50px 0px;
+    }
+
+    .shopbtndiv {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        margin: 30px 0px;
+    }
+
+    .scoreshop {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 40px;
+    }
+
+    /* Кнопка перехода в магазин */
+    .shopOpenDiv {
+
+        display: flex;
+        flex-direction: column;
+        align-items: end;
+
+    }
+
+    .shopOpen {
+        padding: 20px 60px;
+        border-radius: 15px;
+        margin: 30px 15px 0px;
+    }
+    /* Скины */
+    .scinone{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scintwo{
+        background-color: rgb(86, 18, 181);
+        color: white;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scinthree{
+        background-color: rgb(255, 221, 0);
+        color: rgb(0, 0, 0);
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scinfour{
+        background-color: rgb(14, 10, 10);
+        color: white;
+        width: 100px;
+        height: 100px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scinoneclick{
+        background-color: rgb(255, 255, 255);
+        color: rgb(0, 0, 0);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scintwoclick{
+        background-color:rgb(86, 18, 181);
+        color: rgb(255, 255, 255);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scintheeclick{
+        background-color: rgb(255, 221, 0);
+        color: rgb(0, 0, 0);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    .scinfourclick{
+        background-color: rgb(0, 0, 0);
+        color: rgb(255, 255, 255);
+        width: 300px;
+        height: 300px;
+        border-radius: 100%;
+        align-content: center;
+
+    }
+    /*Мои скины  */
+    .myscins{
+        padding: 20px 60px;
+        background-color: yellow;
+        border-radius: 15px;
+        margin: 30px 15px;
+    }
+</style>
+
+</html>
